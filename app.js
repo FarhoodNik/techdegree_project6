@@ -26,7 +26,7 @@ function addPhraseToDisplay(arr){
         li.textContent = arr[i];
         phraseUl.appendChild(li);
         if (arr[i] >= "A" && arr[i] <= "Z"  || arr[i] >= "a" && arr[i] <= "z" ){
-            li.className = "latter";
+            li.className = "letter";
         }else{
             li.className = "space";
         }
@@ -36,6 +36,22 @@ function addPhraseToDisplay(arr){
 
 }
 addPhraseToDisplay(phraseArray); 
+
+function ckeckletter(button){
+    let letter = document.querySelector(".letter");
+    let match = null;
+    for (let i = o; i<letter.length; i++){
+        if (button.textContent === letter[i]){
+            li.appendChild(letter[i]);
+            letter[i].className = "show"
+            match = button.textContent;
+
+        }else{
+            return match;
+        }
+
+    }
+}
 
 
 
