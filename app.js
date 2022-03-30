@@ -38,10 +38,10 @@ function addPhraseToDisplay(arr){
 addPhraseToDisplay(phraseArray); 
 
 function ckeckletter(button){
-    let letter = document.querySelector(".letter");
+    let letter = document.querySelectorAll(".letter");
     let match = null;
-    for (let i = o; i<letter.length; i++){
-        if (button.textContent === letter[i]){
+    for (let i = 0; i<letter.length; i++){
+        if (button.textContent === letter[i].textContent){
             li.appendChild(letter[i]);
             letter[i].className = "show";
             match = button.textContent;
@@ -60,7 +60,8 @@ qwerty.addEventListener("click", (e) =>{
         btn.disabled = true;
         btn.className = "chosen";
     }
-    let letterFound = ckeckletter(button);
+    let letterFound = ckeckletter(btn);
+    console.log(letterFound);
     
 
 });
