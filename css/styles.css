@@ -124,7 +124,7 @@ button {
 #overlay {
   display: flex;
   flex-direction: column;
-  position: fixed;
+  position:fixed;
   color: #FFFFFF;
   justify-content: center;
   top: 0;
