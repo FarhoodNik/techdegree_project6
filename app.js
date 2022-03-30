@@ -43,7 +43,7 @@ function ckeckletter(button){
     for (let i = o; i<letter.length; i++){
         if (button.textContent === letter[i]){
             li.appendChild(letter[i]);
-            letter[i].className = "show"
+            letter[i].className = "show";
             match = button.textContent;
 
         }else{
@@ -52,6 +52,18 @@ function ckeckletter(button){
 
     }
 }
+
+qwerty.addEventListener("click", (e) =>{
+    let btn = e.target;
+    
+    if(btn.tagName === "BUTTON"){
+        btn.disabled = true;
+        btn.className = "chosen";
+    }
+    let letterFound = ckeckletter(button);
+    
+
+});
 
 
 
