@@ -60,14 +60,15 @@ qwerty.addEventListener("click", (e) =>{
     if(btn.tagName === "BUTTON"){
         btn.disabled = true;
         btn.className = "chosen";
-    }
-    let letterFound = ckeckletter(btn);
-    console.log(letterFound);
-    if(letterFound === null) {
-        const lost = document.querySelectorAll(".tries img")[missed];
-        lost.src='images/lostHeart.png';
-        missed++
-        console.log(lost);
+        let letterFound = ckeckletter(btn);
+    
+    
+        if(letterFound === null) {
+            const lost = document.querySelectorAll(".tries img")[missed];
+            lost.src='images/lostHeart.png';
+            missed++
+            
+        }  
     }
     checkWin();
     
@@ -83,11 +84,12 @@ function checkWin(){
         title.textContent = 'You are a winner today';
         overlay.style.display = 'flex';
         btn_reset.style.display = "none";
+        
     } else if (missed > 4 ) {
         overlay.className = 'lose';
         title.textContent = 'Your are a loser today';
         overlay.style.display = 'flex';
-        btn_reset.style.display = "none";
+        btn_reset.style.display = "none";  
     }
     
 }
