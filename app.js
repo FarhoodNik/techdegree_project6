@@ -2,7 +2,7 @@ const qwerty = document.getElementById("qwerty");
 const phrase = document.getElementById("phrase");
 const btn_reset = document.querySelector(".btn__reset");
 const phraseUl = document.querySelector('#phrase ul');
-const phrases = ["planrt earth", "green grass", "iron maiden", "mad hatter", "pink floyd"];
+const phrases = ["plant earth", "green grass", "iron maiden", "mad hatter", "pink floyd"];
 const phraseArray = getRandomPhraseAsArray(phrases);
 
 
@@ -40,18 +40,19 @@ addPhraseToDisplay(phraseArray);
 function ckeckletter(button){
     let letter = document.querySelectorAll(".letter");
     let match = null;
-    for (let i = 0; i<letter.length; i++){
-        if (button.textContent === letter[i].textContent){
-            li.appendChild(letter[i]);
-            letter[i].className = "show";
+    let li = document.querySelectorAll("li");
+    for (let i = 0; i<li.length; i++){
+        if (button.textContent === li[i].textContent.toLowerCase()){
+            li[i].classList.add('show'); 
+            
             match = button.textContent;
 
-        }else{
-            return match;
         }
 
     }
+    return match
 }
+
 
 qwerty.addEventListener("click", (e) =>{
     let btn = e.target;
@@ -62,9 +63,34 @@ qwerty.addEventListener("click", (e) =>{
     }
     let letterFound = ckeckletter(btn);
     console.log(letterFound);
+    if(letterFound === null) {
+        const lost = document.querySelectorAll(".tries img")[missed];
+        lost.src='images/lostHeart.png';
+        missed++
+        console.log(lost);
+    }
+    checkWin();
     
 
 });
+function checkWin(){
+    const letter = document.querySelectorAll('.letter');
+    const show = document.querySelectorAll('.show');
+    let title = document.querySelector(".title");
+
+    if (letter.length === show.length) {
+        overlay.className = 'win'; 
+        title.textContent = 'You are a winner today';
+        overlay.style.display = 'flex';
+        btn_reset.style.display = "none";
+    } else if (missed > 4 ) {
+        overlay.className = 'lose';
+        title.textContent = 'Your are a loser today';
+        overlay.style.display = 'flex';
+        btn_reset.style.display = "none";
+    }
+    
+}
 
 
 
